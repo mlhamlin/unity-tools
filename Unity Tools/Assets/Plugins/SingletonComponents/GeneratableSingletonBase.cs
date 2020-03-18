@@ -7,6 +7,8 @@ namespace SingletonComponents
         private static T _instance;
         private static bool _applicationIsQuitting;
 
+        public static bool SafeToAccess => !_applicationIsQuitting;
+
         public static bool InstanceValueSet => _instance != null;
 
         public static T Instance => GetInstance();

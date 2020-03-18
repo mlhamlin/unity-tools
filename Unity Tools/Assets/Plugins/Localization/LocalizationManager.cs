@@ -7,17 +7,10 @@ namespace Plugins.Localization
 {
     public class LocalizationManager : GeneratablePersistentSingletonBase<LocalizationManager>
     {
-        private LanguageChangedEvent languageChanged = new LanguageChangedEvent();
-        private Language _currentLanguage;
+        private readonly LanguageChangedEvent languageChanged = new LanguageChangedEvent();
+        private Language _currentLanguage = Language.Keys;
         private LanguageData _currentLanguageData;
-        private Dictionary<Language, LanguageData> _loadedLanguages;
-
-        protected override void Awake()
-        {
-            base.Awake();
-
-            ChangeLanguageInternal(Language.EnglishUS);
-        }
+        private readonly Dictionary<Language, LanguageData> _loadedLanguages = new Dictionary<Language, LanguageData>();
 
         public static string Localize(string key)
         {
@@ -36,7 +29,7 @@ namespace Plugins.Localization
 
         public static void RemoveLanguageChangedListener(UnityAction action)
         {
-            if (InstanceValueSet)
+            if (SafeToAccess && InstanceValueSet)
             {
                 Instance.languageChanged.RemoveListener(action);
             }
@@ -51,6 +44,7 @@ namespace Plugins.Localization
         {
             if (language == _currentLanguage)
             {
+                Debug.Log("New Language " + language + " is same as current Language " + _currentLanguage);
                 return;
             }
 

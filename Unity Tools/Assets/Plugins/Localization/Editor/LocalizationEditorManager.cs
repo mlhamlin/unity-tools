@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEditor;
+using UnityEngine;
 
 namespace Plugins.Localization
 {
     public static class LocalizationEditorManager
     {
-        private const string KEY_PATH = "Assets/Resources/Localization/Keys.json";
+        private const string KEY_PATH = "Assets/Resources/Localization/keys.json";
         private static string _filter = "";
         private static string[] _filteredKeys;
         private static List<string> _keys = new List<string>();
@@ -30,7 +31,9 @@ namespace Plugins.Localization
 
         public static void ReimportKeys()
         {
-            var keysJson = EditorGUIUtility.Load(KEY_PATH);
+            var keysJson = EditorGUIUtility.Load(KEY_PATH) as TextAsset;
+            var keysObj = JsonUtility.FromJson<KeyList>(keysJson.text);
+            _keys = keysObj.Keys;
         }
 
         public static string[] GetKeys()

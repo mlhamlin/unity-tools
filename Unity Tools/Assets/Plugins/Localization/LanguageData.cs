@@ -8,13 +8,15 @@ namespace Plugins.Localization
     public class LanguageData
     {
         [SerializeField] private string language;
-        [SerializeField] private Dictionary<string, string> data = new Dictionary<string, string>();
+        [SerializeField] private List<string> keys = new List<string>();
+        [SerializeField] private List<string> values = new List<string>();
 
         public string Localize(string key)
         {
-            if (data.TryGetValue(key, out var text))
+            var index = keys.FindIndex(x => x == key);
+            if (index >= 0 && index < values.Count)
             {
-                return text;
+                return values[index];
             }
 
             Debug.Log("Failed to find localized text for key " + key + " in language " + language);

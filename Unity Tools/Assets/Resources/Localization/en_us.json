@@ -1,0 +1,13 @@
+{
+  "language": "US English",
+  "keys": [
+    "test1",
+    "test2",
+    "test3"
+  ],
+  "values": [
+    "This is a test string",
+    "A second test string",
+    "A third test string"
+  ]
+}

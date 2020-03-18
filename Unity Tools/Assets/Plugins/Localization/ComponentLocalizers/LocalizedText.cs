@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Plugins.Localization
+namespace Plugins.Localization.LocalizeComponents
 {
     [RequireComponent(typeof(Text))]
     public class LocalizedText : ComponentLocalizerBase

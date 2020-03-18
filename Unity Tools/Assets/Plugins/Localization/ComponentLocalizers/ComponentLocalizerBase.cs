@@ -1,10 +1,8 @@
-using System;
-using UnityEditor;
 using UnityEngine;
 
-namespace Plugins.Localization
+namespace Plugins.Localization.LocalizeComponents
 {
-    public abstract class ComponentLocalizerBase : UnityEngine.MonoBehaviour
+    public abstract class ComponentLocalizerBase : MonoBehaviour
     {
         [SerializeField, LocaKey] protected string locaKey;
 
@@ -12,6 +10,7 @@ namespace Plugins.Localization
 
         protected virtual void Localize()
         {
+            Debug.Log("Re localize");
             UpdateComponent(LocalizationManager.Localize(locaKey));
         }
 
