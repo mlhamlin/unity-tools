@@ -12,4 +12,9 @@ public class TestScript : MonoBehaviour
     {
         LocalizationManager.ChangeLanguage(Language.EnglishUS);
     }
+
+    public void SetLanguageToFrench()
+    {
+        LocalizationManager.ChangeLanguage(Language.FrenchTest);
+    }
 }

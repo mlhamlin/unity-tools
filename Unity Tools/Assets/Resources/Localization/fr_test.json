@@ -1,0 +1,13 @@
+{
+  "language": "Google French",
+  "keys": [
+    "test1",
+    "test2",
+    "test3"
+  ],
+  "values": [
+    "Ceci est une chaîne de test",
+    "Une deuxième chaîne de test",
+    "Une troisième chaîne de test"
+  ]
+}

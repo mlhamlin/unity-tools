@@ -10,7 +10,6 @@ namespace Plugins.Localization.LocalizeComponents
 
         protected virtual void Localize()
         {
-            Debug.Log("Re localize");
             UpdateComponent(LocalizationManager.Localize(locaKey));
         }
 
